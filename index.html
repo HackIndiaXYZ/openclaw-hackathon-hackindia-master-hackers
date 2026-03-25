@@ -40,6 +40,26 @@
 <label><input type="checkbox" onchange="saveProgress()"> Chemistry Done</label><br>
 
   <script>
+    function saveProgress() {
+  let checks = document.querySelectorAll("input[type=checkbox]");
+  let progress = [];
+
+  checks.forEach((c, i) => {
+    progress[i] = c.checked;
+  });
+
+  localStorage.setItem("progress", JSON.stringify(progress));
+}
+
+window.onload = function() {
+  let saved = JSON.parse(localStorage.getItem("progress"));
+  if (saved) {
+    let checks = document.querySelectorAll("input[type=checkbox]");
+    checks.forEach((c, i) => {
+      c.checked = saved[i];
+    });
+  }
+}
   function generatePlan() {
     let hours = document.getElementById("hours").value;
 
