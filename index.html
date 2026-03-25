@@ -35,22 +35,32 @@
   <h2 id="output"></h2>
 
   <script>
-    function generatePlan() {
-      let hours = document.getElementById("hours").value;
+  function generatePlan() {
+    let hours = document.getElementById("hours").value;
 
-      if (hours == "") {
-        alert("Enter hours!");
-        return;
-      }
-
-      let plan = `
-      Math: ${hours*0.4} hrs <br>
-      Physics: ${hours*0.3} hrs <br>
-      Chemistry: ${hours*0.3} hrs
-      `;
-
-      document.getElementById("output").innerHTML = plan;
+    if (hours == "") {
+      alert("Enter hours!");
+      return;
     }
+
+    let math = (hours * 0.4).toFixed(1);
+    let physics = (hours * 0.3).toFixed(1);
+    let chemistry = (hours * 0.3).toFixed(1);
+
+    let plan = `
+    📅 Daily Plan:<br><br>
+    🧮 Math: ${math} hrs<br>
+    ⚛️ Physics: ${physics} hrs<br>
+    🧪 Chemistry: ${chemistry} hrs<br><br>
+    
+    ⏰ Suggested Routine:<br>
+    Morning: Math<br>
+    Afternoon: Physics<br>
+    Evening: Chemistry
+    `;
+
+    document.getElementById("output").innerHTML = plan;
+  }
   </script>
 
 </body>
