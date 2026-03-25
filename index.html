@@ -52,16 +52,24 @@
     let physics = (hours * 0.3).toFixed(1);
     let chemistry = (hours * 0.3).toFixed(1);
 
+    let suggestion = "";
+
+    if (hours < 3) {
+      suggestion = "⚡ Focus on 1 subject deeply.";
+    } else if (hours < 6) {
+      suggestion = "🔥 Balanced study day!";
+    } else {
+      suggestion = "🚀 High performance day! Add revision.";
+    }
+
     let plan = `
     📅 Daily Plan:<br><br>
     🧮 Math: ${math} hrs<br>
     ⚛️ Physics: ${physics} hrs<br>
     🧪 Chemistry: ${chemistry} hrs<br><br>
     
-    ⏰ Suggested Routine:<br>
-    Morning: Math<br>
-    Afternoon: Physics<br>
-    Evening: Chemistry
+    💡 AI Suggestion:<br>
+    ${suggestion}
     `;
 
     document.getElementById("output").innerHTML = plan;
