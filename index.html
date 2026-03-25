@@ -39,63 +39,40 @@
 <label><input type="checkbox" onchange="saveProgress()"> Math Done</label><br>
 <label><input type="checkbox" onchange="saveProgress()"> Physics Done</label><br>
 <label><input type="checkbox" onchange="saveProgress()"> Chemistry Done</label><br>
-
-  <script>
-    function saveProgress() {
-  let checks = document.querySelectorAll("input[type=checkbox]");
-  let progress = [];
-
-  checks.forEach((c, i) => {
-    progress[i] = c.checked;
-  });
-
-  localStorage.setItem("progress", JSON.stringify(progress));
-}
-
-window.onload = function() {
-  let saved = JSON.parse(localStorage.getItem("progress"));
-  if (saved) {
-    let checks = document.querySelectorAll("input[type=checkbox]");
-    checks.forEach((c, i) => {
-      c.checked = saved[i];
-    });
+<style>
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
+    text-align: center;
   }
-}
-  function generatePlan() {
-    let hours = document.getElementById("hours").value;
 
-    if (hours == "") {
-      alert("Enter hours!");
-      return;
-    }
-
-    let math = (hours * 0.4).toFixed(1);
-    let physics = (hours * 0.3).toFixed(1);
-    let chemistry = (hours * 0.3).toFixed(1);
-
-    let suggestion = "";
-
-    if (hours < 3) {
-      suggestion = "⚡ Focus on 1 subject deeply.";
-    } else if (hours < 6) {
-      suggestion = "🔥 Balanced study day!";
-    } else {
-      suggestion = "🚀 High performance day! Add revision.";
-    }
-
-    let plan = `
-    📅 Daily Plan:<br><br>
-    🧮 Math: ${math} hrs<br>
-    ⚛️ Physics: ${physics} hrs<br>
-    🧪 Chemistry: ${chemistry} hrs<br><br>
-    
-    💡 AI Suggestion:<br>
-    ${suggestion}
-    `;
-
-    document.getElementById("output").innerHTML = plan;
+  h1 {
+    margin-top: 30px;
   }
-  </script>
+
+  input, button {
+    padding: 12px;
+    margin: 10px;
+    border-radius: 10px;
+    border: none;
+  }
+
+  button {
+    background: #22c55e;
+    color: white;
+    cursor: pointer;
+  }
+
+  #output {
+    margin-top: 20px;
+    background: #1e293b;
+    padding: 15px;
+    border-radius: 10px;
+    display: inline-block;
+  }
+</style>
+  
 
 </body>
 </html>
