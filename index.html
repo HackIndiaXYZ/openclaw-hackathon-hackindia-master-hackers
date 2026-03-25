@@ -1,10 +1,57 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HackIndia Project</title>
+  <title>AI Study Planner</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      background: #0f172a;
+      color: white;
+    }
+    input, button {
+      padding: 10px;
+      margin: 10px;
+      border-radius: 8px;
+      border: none;
+    }
+    button {
+      background: #22c55e;
+      color: white;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <h1>My HackIndia Project 🚀</h1>
-  <p>This is my first submission</p>
+
+  <h1>📚 AI Study Planner</h1>
+
+  <p>Enter study hours:</p>
+  <input type="number" id="hours" placeholder="e.g. 5">
+
+  <br>
+  <button onclick="generatePlan()">Generate Plan</button>
+
+  <h2 id="output"></h2>
+
+  <script>
+    function generatePlan() {
+      let hours = document.getElementById("hours").value;
+
+      if (hours == "") {
+        alert("Enter hours!");
+        return;
+      }
+
+      let plan = `
+      Math: ${hours*0.4} hrs <br>
+      Physics: ${hours*0.3} hrs <br>
+      Chemistry: ${hours*0.3} hrs
+      `;
+
+      document.getElementById("output").innerHTML = plan;
+    }
+  </script>
+
 </body>
 </html>
